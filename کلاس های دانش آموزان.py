@@ -1,5 +1,9 @@
-import keyboard
 agents = []
+managers=[]
+teachers=[]
+god_manager=[name['Mohammad hosein'] , family[ 'mohammad bagheri'] , username['Mhmb1388102'] , password['1388102mhmb']]
+teachers_average = []
+
 class Student:
     def __init__(self,name,family,absence,average,Class,National_Code,username,password):
         self.name=name
@@ -10,7 +14,21 @@ class Student:
         self.National_Code = National_Code
         self.username = username
         self.password = password
-def on_key_press():
+class Manager:
+    def __init__(self,name,family,username,password):
+        self.name=name
+        self.family=family
+        self.username=username
+        self.password=password
+class Teachers:
+    def __init__(self , name , family , absens , average , username , password ):
+        self . name = name
+        self . family = family
+        self . absens = absens
+        self . average = average
+        self . username = username
+        self . password = password
+def add_student():
     input_name = input()
     input_family=input()
     input_absence=int(input())
@@ -21,28 +39,84 @@ def on_key_press():
     input_password = input()
     student = Student(input_name,input_family, input_absence,input_average,input_Class, input_National_Code,input_username,input_password)
     return student
+def add_manager():
+    input_name = input()
+    input_family = input()
+    input_username = input()
+    input_password = input()
+    manager = Manager(input_name, input_family,input_username, input_password)
+    return manager
+def add_teacher():
+    input_name = input()
+    input_family = input()
+    input_username = input()
+    input_password = input()
+    input_absens = int(input())
+    input_average = int(input())
+    teacher = Teachers(input_name, input_family,input_absens,input_average, input_username, input_password)
+    return teacher
 def show_info(student):
     print('name='+student.name,'family='+student.family,'absence='+str(student.absence),'average='+str(student.average),'Class='+str(student.Class),'National_Code='+str(student.National_Code))
-def login():
+def login_user():
     username=input()
     password=input()
-    for i in agents:
-        if i.username==username and i.password==password:
+    for i in range(len(agents)):
+        if agents[i].username==username and agents[i].password==password:
             print('login successfuly')
             return i
     print('login unsuccessfuly')
     return 0
+def login_manager():
+    username=input()
+    password=input()
+    for i in range(len(managers)):
+        if managers[i].username==username and managers[i].password==password:
+            print('login_manager successfuly')
+            return i
+    print('login_manager unsuccessfuly')
+    return 0
+def remove(username , password):
+    username = input()
+    password = input()
+    for i in range(len(agents)):
+        if agents[i].username == username and agents[i].password == password :
+            agents . remove(i)
+            return 'remove successfuly'
+        else:
+            return 'remove unsuccessfuly'
+def grading_the_teachers:
+    family_teacher=input()
+    for i in range (len(teachers)):
+        if teachers[i].family == family_teacher
+            average=int(input())
+            teachers_average . append(average)
 while True:
     command = input()
-    if command=='show':
-        show_info(agents[-1])
-    if command == "add":
-        agents.append(on_key_press())
-        #print(agents[0])
-    if command == "esc":
-        print("bye")
-        break
     if command=='login':
         login_user=login()
+        if login_user=='login successfuly':
+            t=int(input())
+            if t == 'show':
+                show_info(agents[-1])
+            if t == 'grading the teachers':
+                grading_the_teachers()
+            if t == "esc":
+                print("bye")
+                break
+    if command == 'login_manager':
+        login__manager=login_manager()
+        if login__manager=='login_manager successfuly':
+            t=int(input())
+            if t == "add":
+                agents.append(add_student())
+            if t == 'remove':
+                print(remove())
+            if t == 'add teacher':
+                teachers . append(add_teacher())
+            if t == 'add manager':
+                managers . append(add_manager())
+
+
+
 
 
