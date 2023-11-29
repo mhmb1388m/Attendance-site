@@ -1,6 +1,7 @@
 agents = []
 managers=[]
 teachers=[]
+god_manager = {name : "mohammad hosein"}
 god_manager=[name['Mohammad hosein'] , family[ 'mohammad bagheri'] , username['Mhmb1388102'] , password['1388102mhmb']]
 teachers_average = []
 
@@ -34,7 +35,7 @@ def add_student():
     input_absence=int(input())
     input_average=int(input())
     input_Class=int(input())
-    input_National_Code=int(input())
+    input_National_Code=int(input("input_National_Code:"))
     input_username = input()
     input_password = input()
     student = Student(input_name,input_family, input_absence,input_average,input_Class, input_National_Code,input_username,input_password)
