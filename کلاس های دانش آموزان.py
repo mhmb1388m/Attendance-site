@@ -1,8 +1,8 @@
 agents = []
 managers=[]
 teachers=[]
-god_manager = {name : "mohammad hosein"}
-god_manager=[name['Mohammad hosein'] , family[ 'mohammad bagheri'] , username['Mhmb1388102'] , password['1388102mhmb']]
+god_manager = {"name" : "mohammad hosein"}
+#god_manager=[name['Mohammad hosein'] , family[ 'mohammad bagheri'] , username['Mhmb1388102'] , password['1388102mhmb']]
 teachers_average = []
 
 class Student:
@@ -85,18 +85,31 @@ def remove(username , password):
             return 'remove successfuly'
         else:
             return 'remove unsuccessfuly'
-def grading_the_teachers:
+def grading_the_teachers():
     family_teacher=input()
     for i in range (len(teachers)):
-        if teachers[i].family == family_teacher
+        if teachers[i].family == family_teacher:
             average=int(input())
             teachers_average . append(average)
+def login_god_manager():
+    username=input()
+    password=input()
+    if
+def read_txt_file():
+    file_name = input()
+    file_path = f'C:\\Users\\USER\\Desktop\\{file_name}.txt'
+    file = open(file_path, 'r', encoding='utf-8')
+    return file
+
+file = read_txt_file()
+
 while True:
-    command = input()
+    command = file.readline()
+    print(command)
     if command=='login':
-        login_user=login()
+        login_user=login_user()
         if login_user=='login successfuly':
-            t=int(input())
+            t=file.readline()
             if t == 'show':
                 show_info(agents[-1])
             if t == 'grading the teachers':
@@ -107,7 +120,7 @@ while True:
     if command == 'login_manager':
         login__manager=login_manager()
         if login__manager=='login_manager successfuly':
-            t=int(input())
+            t=file.readline()
             if t == "add":
                 agents.append(add_student())
             if t == 'remove':
