@@ -1,3 +1,8 @@
+import tkinter as tk
+from tkinter import ttk
+window=tk.Tk()
+window.title('meow')
+window.geometry('6000x920')
 agents = []
 managers=[]
 teachers=[]
@@ -68,8 +73,18 @@ def login_user():
     print('login unsuccessfuly')
     return 0
 def login_manager():
-    username=input()
-    password=input()
+    for widgets in window.winfo_children():
+        widgets.destroy()
+    inputtxt = tk.Text(window,
+                       height=5,
+                       width=20)
+    inputtxt.pack()
+    inputtxt2 = tk.Text(window,
+                        height=5,
+                        width=20)
+    inputtxt2.pack()
+    username = inputtxt.get(1.0, "end-1c")
+    password = inputtxt2.get(1.0, "end-1c")
     for i in range(len(managers)):
         if managers[i].username==username and managers[i].password==password:
             print('login_manager successfuly')
@@ -91,18 +106,54 @@ def grading_the_teachers():
         if teachers[i].family == family_teacher:
             average=int(input())
             teachers_average . append(average)
+def submit_manager():
+    lst=[]
+    un = inputtxt.get(1.0, "end-1c")
+    pw = inputtxt2.get(1.0, "end-1c")
+    lst.append(un)
+    lst.append(pw)
+    return lst
 def login_god_manager():
-    username=input()
-    password=input()
-    if
+    for widgets in window.winfo_children():
+        widgets.destroy()
+    submit_button= tk.Button(window, text="SUBMIT",command=submit_manager)
+    submit_button.place(x=825, y=170)
+    inputtxt = tk.Text(window,
+                       height=5,
+                       width=20)
+    inputtxt.pack()
+    inputtxt2 = tk.Text(window,
+                        height=5,
+                        width=20)
+    inputtxt2.pack()
+    username = (submit_button())[0]
+    password= (submit_button())[1]
+    print(username,password)
+    if username=='Mhmb1388102' and password=='1388102mhmb':
+        god_manager_page()
+        return 'login god manager successfuly'
 def read_txt_file():
     file_name = input()
     file_path = f'C:\\Users\\USER\\Desktop\\{file_name}.txt'
     file = open(file_path, 'r', encoding='utf-8')
     return file
-
-file = read_txt_file()
-
+def god_manager_page():
+    for widgets in window.winfo_children():
+        widgets.destroy()
+    lable1 = ttk.Label(window, text='Hello god manager!', background='#34d8eb')
+    lable1.place(x=770, y=0, height=50, width=200)
+    button = tk.Button(window, text="add manager",command=add_manager)####
+    button.place(x=900, y=50)
+    button1 = tk.Button(window, text="add teachers",command=add_teacher)#######
+    button1.place(x=740, y=50)
+def first_page():
+    button = tk.Button(window, text="login god manager", command=login_god_manager)
+    button.pack()
+    button2 = tk.Button(window, text="login managers")
+    button2.place(x=800,y=30)
+    window.mainloop()
+first_page()
+'''
 while True:
     command = file.readline()
     print(command)
@@ -129,6 +180,7 @@ while True:
                 teachers . append(add_teacher())
             if t == 'add manager':
                 managers . append(add_manager())
+'''
 
 
 
